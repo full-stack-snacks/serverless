@@ -1,29 +1,22 @@
-from http.server import BaseHTTPRequestHandler
-from cowpy import cow
+# from http.server import BaseHTTPRequestHandler
+# from cowpy import cow
 
-class handler(BaseHTTPRequestHandler):
+# class handler(BaseHTTPRequestHandler):
 
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type','text/plain')
-        self.end_headers()
-        message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
-        self.wfile.write(message.encode())
-        return
-
-        
-# from typing import Optional
-
-# from fastapi import FastAPI
-
-# app = FastAPI()
+#     def do_GET(self):
+#         self.send_response(200)
+#         self.send_header('Content-type','text/plain')
+#         self.end_headers()
+#         message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
+#         self.wfile.write(message.encode())
+#         return
 
 
-# @app.get("/")
-# def read_root():
-#     return {"Hello": "World"}
+from fastapi import FastAPI
+
+app = FastAPI()
 
 
-# @app.get("/items/{item_id}")
-# def read_item(item_id: int, q: Optional[str] = None):
-#     return {"item_id": item_id, "q": q}
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
