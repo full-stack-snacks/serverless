@@ -1,5 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
+import sys
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         s = self.path
@@ -11,5 +13,6 @@ class handler(BaseHTTPRequestHandler):
             message = "Hello, " + dic["name"] + "!"
         else:
             message = "Hello, stranger!"
+        message += f"\n{sys.version}"
         self.wfile.write(message.encode())
         return

@@ -7,4 +7,5 @@ app = FastAPI()
 async def define_word(word):
     url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
     r = requests.get(url + word)
-    return r.json()
+    data = r.json()
+    return data[0]["meanings"][0]["definitions"][0]["definition"]
